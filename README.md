@@ -1,7 +1,6 @@
 
 # DevUp Program Data Science -Capstone project – Citi Bike
 
-One Paragraph of project description goes here
 
 ## Data Sources:
 
