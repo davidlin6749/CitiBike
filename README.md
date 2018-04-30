@@ -408,8 +408,7 @@ It will use Model5 and calculate new time based on todays weather.<br  />
 library(geosphere)
 library(magrittr)
 library(dplyr)
-rm(df3)
-#creates distance in miles  column HOLY took 30 - 45 minutes to RUN!!!! try not to run again..
+#creates distance in miles  column HOLY took 30 - 45 minutes to RUN!!!! try not to run again..use 
 df3<- data %>% rowwise()%>% mutate(DIS=distHaversine(c(Start_Station_Longitude,`Start_Station_Latitude`),c(`End_Station_Longitude`,`End_Station_Latitude`))/1609)
 
 #create DataFrame for predicting how long each station to station. Distance,Median Speed..
@@ -453,6 +452,7 @@ avgwind= mean(wind)
 totalrainamt = rawWG$forecast$simpleforecast$forecastday$qpf_allday$mm
 totalrainamt = as.numeric(totalrainamt)
 sumofrain= sum(totalrainamt)
+todayweather= rawWG$forecast$txt_forecast$forecastday$fcttext
 
 #Model to predict speed
 predictTime = function(ss, es) {
@@ -474,6 +474,8 @@ predictTime = function(ss, es) {
   is.num<- sapply(newtime, is.numeric)
   newtime[is.num]<- lapply(newtime[is.num],round,2)
   
+  print(paste("Morning Weather:",todayweather[1]))
+  print(paste("Evening Weather:",todayweather[2]))
   print(paste(newtime[1],"Minutes"))
   print(paste("Start Station =",data_subset$Start_Station_Name[1]))
   print(paste("End Station =",data_subset$End_Station_Name[1]))
@@ -483,8 +485,11 @@ predictTime = function(ss, es) {
 #testing speed. 
 predictTime(3002,3541)
 
+predictTime(3002,498)
+
 predictTime(72,498)
 
+predictTime(72,3002)
 
 ```
 
