@@ -9,7 +9,7 @@ Citi Bike data - https://www.citibikenyc.com/system-data <br  />
 -Provided all primary data<br  />
 Weather Undergound - https://www.wunderground.com/weather/api/<br  />
 -Provided current weather data<br  />
-NOAA - https://www7.ncdc.noaa.gov/CDO/dataproduct<br  />
+NOAA - https://www.ncdc.noaa.gov/cdo-web/<br  />
 -Provided weather history data<br  />
 
 
