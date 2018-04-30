@@ -1,4 +1,3 @@
-# CitiBike
 
 # DevUp Program Data Science -Capstone project – Citi Bike
 
@@ -6,12 +5,12 @@ One Paragraph of project description goes here
 
 ## Data Sources:
 
-Citi Bike data - https://www.citibikenyc.com/system-data <br />
-  -Provided all primary Bike data<br />
-  Weather Undergound - https://www.wunderground.com/weather/api/<br />
-  -Provided current weather data<br />
-  NOAA - https://www7.ncdc.noaa.gov/CDO/dataproduct<br />
-	-Provided weather history data<br />
+Citi Bike data - https://www.citibikenyc.com/system-data 
+-Provided all primary data
+Weather Undergound - https://www.wunderground.com/weather/api/
+-Provided current weather data
+NOAA - https://www7.ncdc.noaa.gov/CDO/dataproduct
+-Provided weather history data
 
 
 ### Aims:
@@ -28,11 +27,11 @@ Create a model that can predict how long a trip will take given a starting point
 
 ### Data Importing:
 
-Citi Bike split 2017 data into 12 csv files. One for each month. Downloaded all 12 files and into a folder.<br />
-  Combines all 12 csv into one data.frame <br />
-  Used Fread and took about 4-5 minutes to complete this process <br />
-  Total rows of data was about 16 million <br />
-  Total columns was 14   <br />
+Citi Bike split 2017 data into 12 csv files. One for each month. Downloaded all 12 files and into a folder.<br  />
+Combines all 12 csv into one data.frame<br  />
+Used Fread and took about 4-5 minutes to complete this process<br  />
+Total rows of data was about 16 million<br  />
+Total columns was 14  <br  />
 
 
 ```
@@ -48,13 +47,13 @@ data <- rbindlist(lapply(filenames,fread))
 
 ## Data Cleaning
 
-Change all column names without spaces. <br />
-Change Birth year from Character to Integer. <br />
-Quickly remove all rows that contains a NA value. <br />
-Remove all unknown in User_type  <br />
-Split Starting Time to date and time. <br />
-Split Ending time to date and time. <br />
-Change both start dates to end dates to date formats. <br />
+Change all column names without spaces.<br  />
+Change Birth year from Character to Integer.<br  />
+Quickly remove all rows that contains a NA value.<br  />
+Remove all unknown in User_type<br  />
+Split Starting Time to date and time.<br  />
+Split Ending time to date and time.<br  />
+Change both start dates to end dates to date formats.<br  />
 
 
 Notes: There are other data cleaning later on during data visualization. Ex. Removing unknowns genders, having age limits, speed limits… 
@@ -104,8 +103,8 @@ Create Visualizations using the Citi Bike data
 
 ## 1)	Top 5 stations with the most starts (showing # of starts)
 
-Create two bar charts. Listing the top 5 Start and End stations names with the most number of usage.
-Pershing Square North is the most popular station of all.
+Create two bar charts. Listing the top 5 Start and End stations names with the most number of usage.<br  />
+Pershing Square North is the most popular station of all.<br  />
 ```
 #create subset to show only the top 5 start stations
 david<- sort(table(data$Start_Station_Name),decreasing =TRUE)[1:5]
@@ -138,7 +137,7 @@ text(x = part1, y = david2, label = david, pos = 3, cex = 0.8, col = "red")
 ```
 ## 2)	Trip duration by user type
 
-Turn Trip_Duration into hours. Round to only 2 decimal places. Plot bar chart using ggplot
+Turn Trip_Duration into hours. Round to only 2 decimal places. Plot bar chart using ggplot<br  />
 
 ```
 library(plyr)
@@ -164,9 +163,9 @@ part2+geom_text(aes(label=aa),position=position_dodge(.9),vjust=-0.5)
 ```
 ## 3) Most popular trips based on start station and stop station)
 
-Find all combinations in Start and End Stations. <br /> 
-Create new column to show number of times that specific trip was used. <br />
-Used ggplot to show which route was most popular. <br />
+Find all combinations in Start and End Stations. <br  />
+Create new column to show number of times that specific trip was used.<br  />
+Used ggplot to show which route was most popular.<br  />
 
 ```
 library(data.table)
@@ -197,14 +196,14 @@ library(dplyr)
 ```
 ## 4)	Rider performance by Gender and Age based on average trip distance (station to station), median speed (trip duration / distance traveled)
 
-Used distHaversine formula from geosphere package to calculate distance using log and lat for start and end stations. <br />
-Distance is in meters. Changed to Miles <br />
-Create age column using the year born. <br />
-Creating new dataframe using summarise to show only columns that I need. <br />
-Change 1 to males and 0 to females <br />
-Citi Bike age limit is at least 16 years old to ride Bike. Removed all ages under 16. No one over 100 years of age. <br />
-Create a interactive scatter plot using plotly. <br />
-Hover mouse to a certain bubble to show age, trip distance, speed, gender. <br />
+Used distHaversine formula from geosphere package to calculate distance using log and lat for start and end stations. <br  />
+Distance is in meters. Changed to Miles<br  />
+Create age column using the year born.<br  />
+Creating new dataframe using summarise to show only columns that I need.<br  />
+Change 1 to males and 0 to females<br  />
+Citi Bike age limit is at least 16 years old to ride Bike. Removed all ages under 16. No one over 100 years of age.<br  />
+Create a interactive scatter plot using plotly.<br  />
+Hover mouse to a certain bubble to show age, trip distance, speed, gender.<br  />
 
 
 ```
@@ -261,10 +260,10 @@ po <- plot_ly(df_cust, x =df_cust$avg_trip_distance , y =df_cust$median_speed, t
 ```
 ## 5)	What is the busiest bike in NYC in 2017? How many times was it used? How many minutes was it in use?
 
-Create Bike datafram to show only Bike Id, Trip Duration in minutes, and number of uses. <br />
-Round all number to 2 decimal places <br />
-Used plotly for interactive scatterplot. <br />
-hover to see Bike id, Total Trip Duration in minutes, and total number of uses. <br />
+Create Bike datafram to show only Bike Id, Trip Duration in minutes, and number of uses.<br  />
+Round all number to 2 decimal places<br  />
+Used plotly for interactive scatterplot.<br  />
+hover to see Bike id, Total Trip Duration in minutes, and total number of uses.<br  />
 
 ```
 #create bike dataframe to show trip duration in minutes and number of times.
@@ -297,40 +296,38 @@ Bow <- plot_ly(bike, x =bike$sum_duration , y =bike$count, type = 'scatter',
 
 ### Model that can predict how long a trip will take given a starting point and destination given weather status.
 
-Using temperature and wind speed as my variable to test see how long a trip would take.
+Using temperature and wind speed as my variable to test see how long a trip would take.<br  />
 
 ## Gather past weather data
-I gather data from NOAA for past weather data from 2017/01/01 to 2018/01/01 <br />
-change YEARMODA from character to Date. <br />
-Only used Mean Temperature and Wind Speed as the variables <br />
-Removed all non used columns. Most of data was missing and incomplete. <br />
-Precipitation data was incorrect. I checked with WeatherUnderground. 2017/01/04 -On WU there was 0 inch of rain, but NOAA had reported .49 inch.<br />
-Joined both dataframs using Start_Date as the main element.<br />
+I gather data from NOAA for past weather data from 2017/01/01 to 2018/01/01<br  />
+Changed date from Factor to as.Date<br  />
+Used Mean Temperature, Wind Speed, Precipitation as the variables<br  />
+Removed all non used columns. Most of data was missing and incomplete. <br  />
+Joined both dataframs using Start_Date as the main element.<br  />
 
 ```
-cleanweather<- read.table("https://www1.ncdc.noaa.gov/pub/orders/CDO3355787625108.txt",header = TRUE,sep=",")
+cleanweather2<- read.table("C:/Users/DavidLin/Desktop/13296198.csv",header = TRUE,sep=",")
+summary(cleanweather2)
+colnames(cleanweather2)
+colnames(nroute)
 
-#create new column to change int YEARMODA to Date in x 
-Start_Date<- cleanweather$YEARMODA
-cleanweather<- transform(cleanweather, Start_Date=as.Date(as.character(Start_Date),"%Y%m%d"))
-
-#remove non used columns
-cleanweather=subset(cleanweather,select = -c(STN...,WBAN,YEARMODA,X,DEWP,X.1,SLP,X.2,STP,X.3,VISIB,X.4,X.5,MXSPD,GUST,SNDP,FRSHTT,X.6,MIN,MAX,PRCP))
+cleanweather2$Start_Date<- as.Date(cleanweather2$Start_Date, format ="%Y-%m-%d")
 
 #joined both dataframe. Using date as the main factor. 
 library(data.table)
-setDT(df3)
-setDT(cleanweather)
+setDT(nroute)
+setDT(cleanweather2)
 
-nroute<-nroute[cleanweather, on=c('Start_Date')]
+nroute<-nroute[cleanweather2, on=c('Start_Date')]
+
 ```
 ## Training and Testing Model and selecting Model
 
-Split dataframe in to 50/50.
-Created 4 test modles
-Best model was Model 4.
-tested with a 98% correlation.
-Compared predicted to acutals - very accurate
+Split dataframe in to 50/50.<br  />
+Created 4 test modles<br  />
+Best model was Model 4.<br  />
+tested with a 98% correlation.<br  />
+Compared predicted to acutals - very accurate<br  />
 
 ```
 library(car)
@@ -341,7 +338,7 @@ sample = sample.int(n=nrow(nroute),size=floor(.5*nrow(nroute)),replace = F)
 
 train = nroute[sample,]
 test = nroute[-sample,]
-
+colnames(train)
 #first model using two variables
 model1 = lm(speed ~ temp, data = train)
 
@@ -350,51 +347,57 @@ model2 = lm(Time ~ TEMP + median_speed + DIS, data=train)
 #more training
 model3 = lm(Time ~ TEMP + speed, data=train)
 model4 = lm(Time ~ TEMP + median_speed + DIS + WDSP, data=train)
+model5 = lm(Time ~ TEMP + median_speed + DIS + WDSP + PRCP, data=train)
 
 #testing the trained model
 pred<- predict(model2,test)
 pred2<- predict(model3,test)
 pred3<- predict(model4,test)
+pred4<- predict(model5,test)
 
 #model 2 works the best. Highly accurate compare to predict to actuals
 actuals_preds<-data.frame(cbind(actuals=test$Time,predicteds = pred))
 actuals_preds2<-data.frame(cbind(actuals=test$Time,predicteds = pred2))
 actuals_preds3<-data.frame(cbind(actuals=test$Time,predicteds = pred3))
-
+actuals_preds4<-data.frame(cbind(actuals=test$Time,predicteds = pred4))
 
 correlation_accuracy<- cor(actuals_preds)
 correlation_accuracy2<- cor(actuals_preds2)
 correlation_accuracy3<- cor(actuals_preds3)
-#98% really good. for model 3
-correlation_accuracy
+correlation_accuracy4<- cor(actuals_preds4)
+#98% really good. for model 5 - Actuals_pred4 - correlation_accuracy 4
 correlation_accuracy2
 correlation_accuracy3
+correlation_accuracy4
 
 head(actuals_preds)
 head(actuals_preds2)
 head(actuals_preds3)
+head(actuals_preds4)
 
-#min to max accuracy - 89% - higher the better
+summary(actuals_preds)
+
+#min to max accuracy - 89%
 min_max_accuracy<- mean(apply(actuals_preds3,1,min)/apply(actuals_preds3,1,max))
-#12% mean absolute percentage deviation - lower the better
+#12% mean absolute percentage deviation
 mape<- mean(abs((actuals_preds3$predicteds - actuals_preds3$actuals))/actuals_preds3$actuals)
 
-```
-## Using the Model
 
-Used the first couple code from Part 4. 
-Created new colomn for time. used speed and distance to find time taken.
-Round all number to 2 decimal places and drop all NA data
-Remove all speed that is higher than 25 mph and lower than 5mph
-Called Weather Underground API to get todays weather for NYC.
-Created Function to Predict new time. Input Start station ID and End Station ID.
-It will use Model4 and calculate new time based on todays weather.
+
+```
+# Using the Model
+
+Used the first couple code from Part 4. Created new colomn for time. used speed and distance to find time taken. <br  />
+Round all number to 2 decimal places and drop all NA data Remove all speed that is higher than 25 mph and lower than 5mph <br  />
+Called Weather Underground API to get todays weather for NYC. <br  />
+Created Function to Predict new time. Input Start station ID and End Station ID. <br  />
+It will use Model5 and calculate new time based on todays weather.<br  />
 
 ```
 library(geosphere)
 library(magrittr)
 library(dplyr)
-
+rm(df3)
 #creates distance in miles  column HOLY took 30 - 45 minutes to RUN!!!! try not to run again..
 df3<- data %>% rowwise()%>% mutate(DIS=distHaversine(c(Start_Station_Longitude,`Start_Station_Latitude`),c(`End_Station_Longitude`,`End_Station_Latitude`))/1609)
 
@@ -436,21 +439,12 @@ tempL = as.numeric(tempL)
 avgTemp = (sum(tempH+tempL)/2)
 wind= rawWG$forecast$simpleforecast$forecastday$avewind$mph
 avgwind= mean(wind)
-
-#Other data to grab, but coundnt use past history data for others
-# todayWeather = rawWG$forecast$txt_forecast$forecastday$fcttext
-# rainchanceday = rawWG$forecast$simpleforecast$forecastday$pop[[1]]
-# rainchanceday = as.numeric(rainchanceday)
-# totalrainamt = rawWG$forecast$simpleforecast$forecastday$qpf_allday$mm
-# totalrainamt = as.numeric(totalrainamt)
-# sumofrain= sum(totalrainamt)
-
-# avgwind = 1
-# rainchanceday = 70
+totalrainamt = rawWG$forecast$simpleforecast$forecastday$qpf_allday$mm
+totalrainamt = as.numeric(totalrainamt)
+sumofrain= sum(totalrainamt)
 
 #Model to predict speed
 predictTime = function(ss, es) {
-  
   
   
   indices<- which(nroute$Start_Station_ID==ss & nroute$End_Station_ID==es)
@@ -461,16 +455,14 @@ predictTime = function(ss, es) {
   spe = data_subset$median_speed
   di = data_subset$DIS
   wi = avgwind
-  tedf= data.frame(Time=c(ti),TEMP = c(tem),median_speed=c(spe),DIS=c(di), WDSP=c(wi))
-  newtime = predict(model4,newdata=tedf)
+  tr = sumofrain
+  tedf= data.frame(Time=c(ti),TEMP = c(tem),median_speed=c(spe),DIS=c(di), WDSP=c(wi), PRCP=c(tr))
+  newtime = predict(model5,newdata=tedf)
   
   #round all number to 2 decimal places
   is.num<- sapply(newtime, is.numeric)
   newtime[is.num]<- lapply(newtime[is.num],round,2)
- 
-  #print(list(newtime,data_subset$Start_Station_Name,data_subset$End_Station_Name, data_subset$DIS))
   
- 
   print(paste(newtime[1],"Minutes"))
   print(paste("Start Station =",data_subset$Start_Station_Name[1]))
   print(paste("End Station =",data_subset$End_Station_Name[1]))
@@ -481,6 +473,7 @@ predictTime = function(ss, es) {
 predictTime(3002,3541)
 
 predictTime(72,498)
+
 
 ```
 
