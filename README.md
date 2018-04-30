@@ -21,7 +21,7 @@ Use Citi Bike data to visualize:
 4)	Rider performance by Gender and Age based on average trip distance (station to station), median speed (trip duration / distance traveled)
 5)	What is the busiest bike in NYC in 2017? How many times was it used? How many minutes was it in use?
 
-Create a model that can predict how long a trip will take given a starting point and destination given weather status.
+Create a model that can predict how long a trip will take given a starting point, destination, and weather status.
 
 
 ### Data Importing:
