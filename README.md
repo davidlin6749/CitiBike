@@ -5,12 +5,12 @@ One Paragraph of project description goes here
 
 ## Data Sources:
 
-Citi Bike data - https://www.citibikenyc.com/system-data 
--Provided all primary data
-Weather Undergound - https://www.wunderground.com/weather/api/
--Provided current weather data
-NOAA - https://www7.ncdc.noaa.gov/CDO/dataproduct
--Provided weather history data
+Citi Bike data - https://www.citibikenyc.com/system-data <br  />
+-Provided all primary data<br  />
+Weather Undergound - https://www.wunderground.com/weather/api/<br  />
+-Provided current weather data<br  />
+NOAA - https://www7.ncdc.noaa.gov/CDO/dataproduct<br  />
+-Provided weather history data<br  />
 
 
 ### Aims:
